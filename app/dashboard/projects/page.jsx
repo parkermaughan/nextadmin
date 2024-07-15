@@ -1,6 +1,6 @@
 const ProductsPage = () => {
     return (
-        <div>
+        <div className{styles.container}>
             <h1>Products</h1>
         </div>
     );
