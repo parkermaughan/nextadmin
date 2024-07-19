@@ -13,8 +13,8 @@ const AddProjectPage = () => {
                 </select>
                 <input type="number" placeholder='price' name="price" />
                 <input type="type" placeholder='stock' name="stock" />
-                <input type="title" placeholder='color' name="color" />
-                <input type="title" placeholder='size' name="size" />
+                <input type="text" placeholder='color' name="color" />
+                <input type="text" placeholder='size' name="size" />
                 <textarea name="desc" id="desc" rows="16" placeholder='Discription'>Discription</textarea>
                 <button type='submit'>Submit</button>
             </form>
