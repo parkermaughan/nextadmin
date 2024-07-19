@@ -1,13 +1,15 @@
 import { fetchUsers } from '@/app/lib/data';
-import styles from '../../ui/dashboard/users/users.module.css';
-import Search from '../../ui/dashboard/search/search';
 import Pagination from '../../ui/dashboard/pagination/pagination';
+import Search from '../../ui/dashboard/search/search';
+
+import styles from '../../ui/dashboard/users/users.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
 
-const UsersPage = async () => {
-    const users = await fetchUsers();
-    console.log(users);
+const UsersPage = async ({ searchParams }) => {
+    const q = searchParams?.q || "";
+    const users = await fetchUsers(q);
+
     return (
         <div>
             <div className={styles.container}>
@@ -43,7 +45,9 @@ const UsersPage = async () => {
                                     </div>
                                 </td>
                                 <td>{user.email}</td>
-                                <td>{user.createdAt?.toString().slice(4,16)}</td>
+                                <td>
+                                    {user.createdAt?.toString().slice(4, 16)}
+                                </td>
                                 <td>{user.isAdmin ? 'Admin' : 'Client'}</td>
                                 <td>
                                     <div className={styles.buttons}>
@@ -64,7 +68,7 @@ const UsersPage = async () => {
                         ))}
                     </tbody>
                 </table>
-                <Pagination />
+                <Pagination/>
             </div>
         </div>
     );
