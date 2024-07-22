@@ -54,19 +54,11 @@ const projectSchema = new mongoose.Schema(
         },
         price: {
             type: Number,
-            required: true,
             min: 0,
         },
 
-        img: {
-            type: String,
-        },
-        color: {
-            type: String,
-        },
-        size: {
-            type: String,
-        },
+        
+       
     },
     { timestamps: true }
 );
