@@ -1,42 +1,42 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const userSchema = new mongoose.Schema(
-  {
-    username: {
-      type: String,
-      required: true,
-      unique: true,
-      min: 3,
-      max: 20,
+    {
+        username: {
+            type: String,
+            required: true,
+            unique: true,
+            min: 3,
+            max: 20,
+        },
+        email: {
+            type: String,
+            required: true,
+            unique: true,
+        },
+        password: {
+            type: String,
+            required: true,
+        },
+        img: {
+            type: String,
+        },
+        isAdmin: {
+            type: Boolean,
+            default: false,
+        },
+        isActive: {
+            type: Boolean,
+            default: true,
+        },
+        phone: {
+            type: String,
+        },
+        address: {
+            type: String,
+        },
     },
-    email: {
-      type: String,
-      required: true,
-      unique: true,
-    },
-    password: {
-      type: String,
-      required: true,
-    },
-    img: {
-      type: String,
-    },
-    isAdmin: {
-      type: Boolean,
-      default: false,
-    },
-    isActive: {
-      type: Boolean,
-      default: true,
-    },
-    phone: {
-      type: String,
-    },
-    address: {
-      type: String,
-    },
-  },
-  { timestamps: true }
+    { timestamps: true }
 );
 
 const projectSchema = new mongoose.Schema(
@@ -45,28 +45,33 @@ const projectSchema = new mongoose.Schema(
             type: String,
             required: true,
             unique: true,
-            min: 3,
-            max: 20,
         },
-        dec: {
+        desc: {
             type: String,
-            required: true,
+        },
+        link: {
+            type: String,
         },
         price: {
-            type: String,
-            required: true,
-        },
-        stock: {
             type: Number,
+            required: true,
+            min: 0,
+        },
+
+        img: {
+            type: String,
         },
         color: {
+            type: String,
+        },
+        size: {
             type: String,
         },
     },
     { timestamps: true }
 );
 
-export const User = mongoose.models.User || mongoose.model("User", userSchema);
+export const User = mongoose.models.User || mongoose.model('User', userSchema);
 
 export const Project =
-  mongoose.models.Project || mongoose.model("Project", projectSchema);
+    mongoose.models.Project || mongoose.model('Project', projectSchema);
