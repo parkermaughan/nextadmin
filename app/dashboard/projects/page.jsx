@@ -1,4 +1,5 @@
 import { fetchProjects } from '@/app/lib/data';
+import { deleteProject } from '@/app/lib/actions';
 import Pagination from '@/app/ui/dashboard/pagination/pagination';
 import Search from '@/app/ui/dashboard/search/search';
 import styles from '@/app/ui/dashboard/project/project.module.css';
@@ -71,7 +72,7 @@ const ProjectsPage = async ({ searchParams }) => {
                                             View
                                         </button>
                                     </Link>
-                                    <form action="">
+                                    <form action={deleteProject}>
                                         <input
                                             type="hidden"
                                             name="id"
