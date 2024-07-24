@@ -151,16 +151,22 @@ export const deleteProject = async (formData) => {
 };
 
 // Authenticate Login
-
-export const authenticate = async (prevState, formData) => {
+export const authenticate = async (formData) => {
     const { username, password } = Object.fromEntries(formData);
 
     try {
-        await signIn('credentials', { username, password });
-    } catch (err) {
-        if (err.message.includes('CredentialsSignin')) {
-            return 'Wrong Credentials';
+        const result = await signIn('credentials', {
+            redirect: false,
+            username,
+            password
+        });
+        if (result.error) {
+            return { error: 'Failed to login!' };
         }
-        throw err;
+        return { error: null }; // Or return user data if needed
+    } catch (err) {
+        console.error(err);
+        return { error: 'Failed to login!' };
     }
 };
+
